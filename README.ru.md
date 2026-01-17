@@ -268,3 +268,8 @@ result = client.buy_stars(
 ## Лицензия
 
 MIT License - см. файл [LICENSE](LICENSE).
+
+## Поддержать разработчика
+
+- Ton: UQA37gs5CtR_tGFy0_Z6jgrToMB1wLHZTaxnsZaPZR2iweXV
+
